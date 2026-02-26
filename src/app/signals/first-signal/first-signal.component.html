@@ -4,6 +4,17 @@
 {{ x() }} + {{ y() }} = {{ z() }} / {{doubleZ()}}
 
 <hr>
+<ol class="list-group">
+  @for (name of names(); track $index) {
+    <li class="list-group list-group-item">
+      {{name}}
+    </li>
+  } @empty {
+    <li class="list-group list-group-item list-group-item-danger">
+      Nous ne disposons pas encore de name
+    </li>
+  }
+</ol>
 <p (click)="addName()">
   {{namesLength()}} éléments dans le tableau
 </p>

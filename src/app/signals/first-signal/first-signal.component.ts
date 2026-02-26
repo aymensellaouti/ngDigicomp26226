@@ -12,7 +12,7 @@ export class FirstSignalComponent {
   y = signal(7);
   z = computed(() => this.x() + this.y());
   doubleZ = computed(() => this.z() * 2);
-  names = signal(['jules', 'anas']);
+  names = signal<string[]>([]);
   namesLength = computed(() => this.names().length);
   constructor() {
     effect(() => {
