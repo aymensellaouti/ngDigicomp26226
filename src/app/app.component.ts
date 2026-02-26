@@ -6,13 +6,14 @@ import { Two } from "./components/two/two.component";
 import { RotatingCard } from "./components/rotating-card/rotating-card.component";
 import { Counter } from "./signals/counter/counter.component";
 import { FirstSignalComponent } from "./signals/first-signal/first-signal.component";
+import { TtcComponent } from "./signals/ttc/ttc.component";
 
 @Component({
   selector: 'app-root',
-  imports: [Two, RotatingCard, Counter, FirstSignalComponent],
+  imports: [TtcComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class App {
-  protected readonly title = signal('ngDigicomp26226');
+
 }
