@@ -1,0 +1,9 @@
+<p (mouseenter)="changeName()" [hidden]="isHidden">Hello {{name}}</p>
+<button (click)="showHide()" class="btn btn-danger">
+  show/hide
+</button>
+<input (change)="changeMessage(myInput.value)" #myInput class="form-control" type="text" >
+Le contenu de l'input est : {{message}}
+<div class="alert alert-success">
+  <app-second/>
+</div>
