@@ -1,9 +1,10 @@
 <p>first-signal works!</p>
-<button (click)="increment()" class="btn btn-success">X++</button>
-<button (click)="decrement()" class="btn btn-danger">X--</button>
 <input type="number" [(ngModel)]="x" class="form-control">
 <input type="number" [(ngModel)]="y" class="form-control">
-{{ x }} + {{ y }} = {{ z }}
+{{ x() }} + {{ y() }} = {{ z() }} / {{doubleZ()}}
 
 <hr>
+<p (click)="addName()">
+  {{namesLength()}} éléments dans le tableau
+</p>
 
