@@ -6,10 +6,12 @@ import { DatePipe, UpperCasePipe } from '@angular/common';
 import { LoggerService } from '../../service/logger.service';
 import { HelloService } from '../../service/hello.Service';
 import { ToastrService } from 'ngx-toastr';
+import { CvService } from '../services/cv.service';
+import { EmbaucheComponent } from "../embauche/embauche.component";
 
 @Component({
   selector: 'app-cv-component',
-  imports: [CvList, CvCard, DatePipe, UpperCasePipe],
+  imports: [CvList, CvCard, DatePipe, UpperCasePipe, EmbaucheComponent],
   templateUrl: './cv-component.component.html',
   styleUrl: './cv-component.component.css',
 })
@@ -18,19 +20,14 @@ export class CvComponent {
   logger = inject(LoggerService);
   helloService = inject(HelloService);
   toastr = inject(ToastrService);
-  cvs = signal([
-    new Cv(1, 'Guemara', 'jules', 'Bibliothècaire', '1234', 20, 'rotating_card_profile3.png'),
-    new Cv(2, 'Khribech', 'Anass', 'Bibliothècaire', '1234', 20, ''),
-    new Cv(3, 'Sellaouti', 'Aymen', 'Bibliothècaire', '1234', 20, '            '),
-  ]);
+  cvService = inject(CvService);
+  cvs = this.cvService.getCvs();
   constructor() {
     this.logger.log('cc Cv Component');
     this.helloService.hello();
     this.toastr.info('cc Digicomp :)')
   }
   today = new Date();
-  selectedCv = signal<Cv | null>(null);
-  updateSelectedCv(cv: Cv) {
-    this.selectedCv.set(cv);
-  }
+  selectedCv = this.cvService.getSelectedCv();
+
 }

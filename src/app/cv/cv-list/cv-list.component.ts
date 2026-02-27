@@ -13,5 +13,4 @@ import { NgIf } from "../../../../node_modules/@angular/common/types/_common_mod
 export class CvList {
   //état
   cvs = input<Cv[]>([]);
-  forwardCv = output<Cv>()
 }

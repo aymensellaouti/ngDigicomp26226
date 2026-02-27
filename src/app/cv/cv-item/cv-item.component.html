@@ -1,8 +1,10 @@
 <div (click)="onSelectCv()">
   <img
     class="rounded-circle"
-    width="75px"
-    heigth="75px"
+    [style]="{
+      width: size() + 'px',
+      heigth: size() + 'px',
+    }"
     src="images/{{cv().path | defaultImage}}"
     alt="{{cv().name}}">
     {{cv().name}} {{cv().firstname}}
