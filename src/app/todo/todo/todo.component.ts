@@ -1,5 +1,5 @@
 import { Component, inject, signal } from "@angular/core";
-import { TodoService } from "../service/todo.service";
+import { TodoApi, TodoService } from "../service/todo.service";
 import { Todo } from "../model/todo";
 import { FormsModule } from "@angular/forms";
 
@@ -14,6 +14,17 @@ export class TodoComponent {
   todoService = inject(TodoService);
   todos = this.todoService.getTodos();
   todo = signal<Todo>(new Todo());
+  todosApis = signal<TodoApi[]>([]);
+  constructor() {
+    this.todoService.getTodosFromApi().subscribe({
+      next: (todosApi) => {
+        this.todosApis.set(todosApi);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
   addTodo() {
     this.todoService.addTodo(this.todo());
     this.todo.set(new Todo());
