@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-second',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './second.component.css',
 })
 export class Second {
-
+  acr = inject(ActivatedRoute);
+  monParam = this.acr.snapshot.params['monParam']
 }

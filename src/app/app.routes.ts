@@ -5,6 +5,7 @@ import { Todo } from './todo/model/todo';
 import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { Color } from './components/color/color.component';
 import { TodoComponent } from './todo/todo/todo.component';
+import { Second } from './components/second/second.component';
 
 export const routes: Routes = [
   //cv
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'todo', component: TodoComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: Color },
+  { path: ':monParam', component: Second },
 ];
