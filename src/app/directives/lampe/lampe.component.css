@@ -1,0 +1,7 @@
+.lampe {
+  width: 150px;
+  height: 150px;
+  border: solid 2px black;
+  padding: 150px;
+  border-radius: 50%;
+}
