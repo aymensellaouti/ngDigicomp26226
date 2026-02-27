@@ -3,7 +3,7 @@
     class="rounded-circle"
     width="75px"
     heigth="75px"
-    src="images/{{cv().path}}"
+    src="images/{{cv().path | defaultImage}}"
     alt="{{cv().name}}">
     {{cv().name}} {{cv().firstname}}
 </div>
