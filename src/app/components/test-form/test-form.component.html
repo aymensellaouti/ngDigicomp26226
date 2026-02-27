@@ -1,7 +1,7 @@
 <form #myForm="ngForm">
   Nom <input required type="text" class="form-control" ngModel name="name">
   Age <input required type="text" class="form-control" ngModel name="age">
-  <button (click)="process(myForm)" class="btn btn-danger">
+  <button [disabled]="myForm.invalid" (click)="process(myForm)" class="btn btn-danger">
     process
   </button>
 </form>
