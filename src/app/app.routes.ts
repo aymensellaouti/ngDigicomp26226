@@ -7,6 +7,7 @@ import { Color } from './components/color/color.component';
 import { TodoComponent } from './todo/todo/todo.component';
 import { Second } from './components/second/second.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
+import { NF404 } from './components/nf404/nf404.component';
 
 export const routes: Routes = [
   //cv
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: Color },
   { path: ':monParam', component: Second },
+  { path: '**', component: NF404 },
 ];
