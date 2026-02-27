@@ -6,11 +6,13 @@ import { MiniWordComponent } from './directives/mini-word/mini-word.component';
 import { Color } from './components/color/color.component';
 import { TodoComponent } from './todo/todo/todo.component';
 import { Second } from './components/second/second.component';
+import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 
 export const routes: Routes = [
   //cv
   { path: '', component: First },
   { path: 'cv', component: CvComponent },
+  { path: 'cv/:id', component: DetailsCvComponent },
   { path: 'todo', component: TodoComponent },
   { path: 'word', component: MiniWordComponent },
   { path: 'color', component: Color },

@@ -36,7 +36,7 @@ export class CvService {
    * @returns Cv | null
    */
   findCvById(id: number): Cv | null {
-    return null;
+    return this.cvs().find(cv => cv.id == id) ?? null;
   }
 
   /**
@@ -47,7 +47,11 @@ export class CvService {
    * @returns boolean
    */
   deleteCv(cv: Cv): boolean {
-    return false;
+    const oldTodosLength = this.cvs().length;
+    this.cvs.update((cvs) => {
+      return cvs.filter((actualCv) => actualCv != cv);
+    });
+    return oldTodosLength != this.cvs().length;
   }
 
   selectCv(cv: Cv) {
