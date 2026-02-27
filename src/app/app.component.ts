@@ -6,10 +6,11 @@ import { Pere } from "./commInterComposants/pere/pere.component";
 import { CvComponent } from "./cv/cv-component/cv-component.component";
 import { ExemplesStyle } from "./directives/exemples-style/exemples-style.component";
 import { MiniWordComponent } from "./directives/mini-word/mini-word.component";
+import { Lampe } from "./directives/lampe/lampe.component";
 
 @Component({
   selector: 'app-root',
-  imports: [ MiniWordComponent],
+  imports: [MiniWordComponent, Lampe, CvComponent, ExemplesStyle],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

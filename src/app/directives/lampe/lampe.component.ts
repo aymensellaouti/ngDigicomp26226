@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-lampe',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './lampe.component.css',
 })
 export class Lampe {
+  //état
+  isOn = signal(true);
 
+  interrupteur() {
+    this.isOn.update(state => !state)
+  }
 }

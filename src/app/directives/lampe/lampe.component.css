@@ -5,3 +5,10 @@
   padding: 150px;
   border-radius: 50%;
 }
+.on {
+  background-color: yellow;
+}
+.off {
+  background-color: black;
+  color: white;
+}

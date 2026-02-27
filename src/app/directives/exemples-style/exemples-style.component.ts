@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { NgStyle } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
+import { Highlight } from '../highlight.directive';
 
 @Component({
   selector: 'app-exemples-style',
-  imports: [],
+  imports: [Highlight],
   templateUrl: './exemples-style.component.html',
   styleUrl: './exemples-style.component.css',
 })

@@ -1,9 +1,9 @@
 <div (click)="onSelectCv()">
-  {{cv().name}} {{cv().firstname}}
   <img
     class="rounded-circle"
     width="75px"
     heigth="75px"
     src="images/{{cv().path}}"
     alt="{{cv().name}}">
+    {{cv().name}} {{cv().firstname}}
 </div>
