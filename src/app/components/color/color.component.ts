@@ -7,6 +7,7 @@ import { Component, signal } from '@angular/core';
   styleUrl: './color.component.css',
 })
 export class Color {
+  // état
   color = signal('red');
 
   changeColor(newColorInput: HTMLInputElement) {
