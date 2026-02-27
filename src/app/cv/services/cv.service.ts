@@ -1,11 +1,15 @@
-import {  Injectable, Signal, signal } from '@angular/core';
+import {  inject, Injectable, Signal, signal } from '@angular/core';
 import { Cv } from '../model/cv.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { APP_API } from '../../config/app-api.config';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class CvService {
+  http = inject(HttpClient);
   protected readonly cvs = signal<Cv[]>([
     new Cv(1, 'Guemara', 'jules', 'Bibliothècaire', '1234', 20, 'rotating_card_profile3.png'),
     new Cv(2, 'Khribech', 'Anass', 'Bibliothècaire', '1234', 20, ''),
@@ -17,8 +21,19 @@ export class CvService {
    * Retourne la liste des cvs
    * @returns Signal<Cv[]>
    */
-  getCvs(): Signal<Cv[]> {
+  getFakeCvs(): Signal<Cv[]> {
     return this.cvs.asReadonly();
+  }
+  /**
+   * Retourne la liste des cvs
+   * @returns Signal<Cv[]>
+   */
+  getCvs(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(APP_API.cv);
+  }
+
+  getCvById(id: number): Observable<Cv> {
+    return this.http.get<Cv>(APP_API.cv + id);
   }
   /**
    * Retourne le selectedCv

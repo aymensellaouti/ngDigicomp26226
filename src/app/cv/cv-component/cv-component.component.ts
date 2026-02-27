@@ -21,11 +21,20 @@ export class CvComponent {
   helloService = inject(HelloService);
   toastr = inject(ToastrService);
   cvService = inject(CvService);
-  cvs = this.cvService.getCvs();
+  cvs = signal<Cv[]>([]);
   constructor() {
     this.logger.log('cc Cv Component');
     this.helloService.hello();
-    this.toastr.info('cc Digicomp :)')
+    this.toastr.info('cc Digicomp :)');
+    this.cvService.getCvs().subscribe({
+      next: (cvs) => {
+        this.cvs.set(cvs);
+      },
+      error: (e) => {
+        this.toastr.error(`Les donnés sont fictives merci de contacter l'admin`)
+        this.cvs.set(this.cvService.getFakeCvs()());
+      }
+    })
   }
   today = new Date();
   selectedCv = this.cvService.getSelectedCv();
