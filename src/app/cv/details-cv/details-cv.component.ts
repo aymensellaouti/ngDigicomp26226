@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { CvService } from "../services/cv.service";
 import { APP_ROUTES } from "../../config/app-routes.config";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { catchError, EMPTY } from "rxjs";
 
 @Component({
   selector: 'app-details-cv',
@@ -20,10 +21,16 @@ export class DetailsCvComponent {
 
   constructor() {
     const id = this.acr.snapshot.params['id'];
-    this.cv = toSignal(this.cvService.getCvById(id), {
+    this.cv = toSignal(this.cvService.getCvById(id).pipe(
+      catchError(e => {
+        this.router.navigate([APP_ROUTES.cv]);
+        return EMPTY;
+      })
+    ), {
       initialValue: null
     });
-    if (!this.cv()) this.router.navigate([APP_ROUTES.cv]);
+    console.log (this.cv());
+/*     if (!this.cv()) */
     //this.cv.set(this.cvService.findCvById(id));
     //if(!this.cv()) this.router.navigate([APP_ROUTES.cv]);
     // this.cvService.getCvById(id).subscribe({
